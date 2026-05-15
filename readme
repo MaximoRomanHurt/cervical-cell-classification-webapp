@@ -1,0 +1,95 @@
+# CervixAI — Arquitectura Inicial del Proyecto
+
+> Aplicativo Web de Clasificación de Células Citológicas Cervicales  
+> Universidad Nacional Mayor de San Marcos · Ingeniería de Software
+
+---
+
+## Stack Tecnológico
+
+| Capa       | Tecnología              | Versión  |
+|------------|-------------------------|----------|
+| Frontend   | Angular                 | 17+      |
+| Backend    | Flask (Python)          | 3.0      |
+| Base datos | MySQL                   | 8.0      |
+| ORM        | SQLAlchemy + Flask-Migrate | latest |
+| Auth       | JWT (Flask-JWT-Extended)| 4.6      |
+| CORS       | Flask-CORS              | 4.0      |
+
+---
+
+## Estructura del Proyecto
+
+```
+cervix-ai/
+├── backend/          # API REST Flask
+└── frontend/         # SPA Angular
+```
+
+---
+
+## Iniciar el Backend (Desarrollo)
+
+```bash
+cd backend
+python -m venv venv
+source venv/bin/activate          # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env              # Completar variables
+flask db init && flask db migrate && flask db upgrade
+python run.py
+```
+API disponible en: `http://localhost:5000/api/v1`
+
+---
+
+## Iniciar el Frontend (Desarrollo)
+
+```bash
+cd frontend
+npm install
+ng serve
+```
+App disponible en: `http://localhost:4200`
+
+---
+
+## Fases de Desarrollo
+
+| Fase | Descripción                          | Estado      |
+|------|--------------------------------------|-------------|
+| 1    | Arquitectura inicial y estructura    | ✅ Completa |
+| 2    | Autenticación JWT                    | ⬜ Pendiente |
+| 3    | Carga y clasificación de imágenes IA | ⬜ Pendiente |
+| 4    | Historial y exportación de reportes  | ⬜ Pendiente |
+| 5    | Docker + CI/CD + Producción          | ⬜ Pendiente |
+
+---
+
+## Endpoints API (Fase 1 — Health Check)
+
+```
+GET  /api/v1/health/ping   → Verificar que la API está activa
+GET  /api/v1/health/db     → Verificar conexión a MySQL
+```
+
+---
+
+## Tests
+
+```bash
+cd backend
+pytest tests/ -v --cov=app
+```
+
+---
+
+## Convenciones
+
+- **Commits**: `feat:`, `fix:`, `docs:`, `refactor:`
+- **Ramas**: `main` → producción | `develop` → integración | `feature/xxx` → desarrollo
+- **Variables sensibles**: NUNCA subir `.env` al repositorio
+
+---
+
+*Desarrollado para el curso de Lenguajes y Compiladores - UNMSM 2025*
