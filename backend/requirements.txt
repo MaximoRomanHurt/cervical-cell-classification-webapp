@@ -22,7 +22,7 @@ python-dotenv==1.0.1
 marshmallow==3.21.3
 
 # Procesamiento de imágenes (fase 3)
-Pillow==10.3.0
+ # Pillow==10.3.0
 
 # HTTP requests (para llamar al microservicio IA)
 requests==2.32.3

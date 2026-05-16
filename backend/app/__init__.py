@@ -32,12 +32,12 @@ def create_app(config_name: str = "development") -> Flask:
     CORS(app, resources={r"/api/*": {"origins": app.config.get("CORS_ORIGINS", "*")}})
 
     # Registrar Blueprints (rutas)
-    from app.routes.auth_routes import auth_bp
+    # from app.routes.auth_routes import auth_bp
     from app.routes.classification_routes import classification_bp
     from app.routes.history_routes import history_bp
     from app.routes.health_routes import health_bp
 
-    app.register_blueprint(auth_bp,            url_prefix="/api/v1/auth")
+   # app.register_blueprint(auth_bp,            url_prefix="/api/v1/auth")
     app.register_blueprint(classification_bp,  url_prefix="/api/v1/classification")
     app.register_blueprint(history_bp,         url_prefix="/api/v1/history")
     app.register_blueprint(health_bp,          url_prefix="/api/v1/health")
